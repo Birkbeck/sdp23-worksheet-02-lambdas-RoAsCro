@@ -29,7 +29,9 @@ public class Outline {
     Arrays.sort(stringArray3, Outline::eChecker);
     System.out.println(Arrays.asList(stringArray3));
 
-    
+    //3
+    System.out.println(StringBetternessAssessor.betterString("dog", "cat", (x, y) -> true));
+    System.out.println(StringBetternessAssessor.betterString("dog", "cat", (x, y) -> false));
 
     // Arrays.sort(intArray,.......)
   }
