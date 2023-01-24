@@ -33,6 +33,10 @@ public class Outline {
     System.out.println(StringBetternessAssessor.betterString("dog", "cat", (x, y) -> true));
     System.out.println(StringBetternessAssessor.betterString("dog", "cat", (x, y) -> false));
 
+    //4
+    System.out.println(new ElementBetternessAssessor<String>().betterElement("dog", "cat", (x, y) -> true));
+    System.out.println(new ElementBetternessAssessor<String>().betterElement("dog", "cat", (x, y) -> false));
+
     // Arrays.sort(intArray,.......)
   }
 
