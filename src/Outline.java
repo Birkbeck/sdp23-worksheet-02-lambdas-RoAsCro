@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Comparator;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Outline {
@@ -40,7 +41,7 @@ public class Outline {
     System.out.println(ElementBetternessAssessor.betterElement("dog", "cat", (x, y) -> true));
     System.out.println(ElementBetternessAssessor.betterElement("dog", "cat", (x, y) -> false));
 
-    //5
+    //5&6
     String[] stringArray4 = {"a", "dsad", "f", "wr3", "wabwdfafwf"};
     List<String> shortWords = allMatches(Arrays.asList(stringArray4), s -> s.length() < 4);
     System.out.println(shortWords);
@@ -49,9 +50,14 @@ public class Outline {
     List<String> evenLengthWords = allMatches(Arrays.asList(stringArray4), s -> (s.length() % 2) == 0);
     System.out.println(evenLengthWords);
 
-    //6
-
-
+    //7&8
+    String[] stringArray5 = {"a", "dsaid", "f", "wr3", "wabwdfafwf"};
+    List<String> excitingWords = transformedList(Arrays.asList(stringArray5), s -> s + "!");
+    System.out.println(excitingWords);
+    List<String> eyeWords = transformedList(Arrays.asList(stringArray5), s -> s.replace("i", "eye"));
+    System.out.println(eyeWords);
+    List<String> upperCaseWords = transformedList(Arrays.asList(stringArray5), String::toUpperCase);
+    System.out.println(upperCaseWords);
 
     // Arrays.sort(intArray,.......)
   }
@@ -76,10 +82,18 @@ public class Outline {
 //  }
 
   public static <T> List<T> allMatches(List<T> list, Predicate<T> p) {
-    List<T> listTwo = new LinkedList<T>();
+    List<T> listTwo = new LinkedList<>();
     for (T s : list) {
       if (p.test(s))
         listTwo.add(s);
+    }
+    return listTwo;
+  }
+
+  public static <T> List<T> transformedList(List<T> list, Function<T, T> f) {
+    List<T> listTwo = new LinkedList<>();
+    for (T s : list) {
+      listTwo.add(f.apply(s));
     }
     return listTwo;
   }
