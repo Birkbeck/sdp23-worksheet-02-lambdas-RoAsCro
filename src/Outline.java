@@ -1,5 +1,8 @@
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class Outline {
   public static void main(String... args) { // varargs alternative to String[]
@@ -37,6 +40,15 @@ public class Outline {
     System.out.println(new ElementBetternessAssessor<String>().betterElement("dog", "cat", (x, y) -> true));
     System.out.println(new ElementBetternessAssessor<String>().betterElement("dog", "cat", (x, y) -> false));
 
+    //5
+    String[] stringArray4 = {"a", "dsad", "f", "wr3", "wabwdfafwf"};
+    List<String> shortWords = allMatches(Arrays.asList(stringArray4), s -> s.length() < 4);
+    System.out.println(shortWords);
+    List<String> wordsWithB = allMatches(Arrays.asList(stringArray4), s -> s.contains("b"));
+    System.out.println(wordsWithB);
+    List<String> evenLengthWords = allMatches(Arrays.asList(stringArray4), s -> (s.length() % 2) == 0);
+    System.out.println(evenLengthWords);
+
     // Arrays.sort(intArray,.......)
   }
 
@@ -48,6 +60,15 @@ public class Outline {
     if (!xCheck && yCheck)
       return 1;
     return 0;
+  }
+
+  public static List<String> allMatches(List<String> list, Predicate<String> p) {
+    List<String> listTwo = new LinkedList<>();
+    for (String s : list) {
+      if (p.test(s))
+        listTwo.add(s);
+    }
+    return listTwo;
   }
 
 }
