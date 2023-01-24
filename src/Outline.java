@@ -37,8 +37,8 @@ public class Outline {
     System.out.println(StringBetternessAssessor.betterString("dog", "cat", (x, y) -> false));
 
     //4
-    System.out.println(new ElementBetternessAssessor<String>().betterElement("dog", "cat", (x, y) -> true));
-    System.out.println(new ElementBetternessAssessor<String>().betterElement("dog", "cat", (x, y) -> false));
+    System.out.println(ElementBetternessAssessor.betterElement("dog", "cat", (x, y) -> true));
+    System.out.println(ElementBetternessAssessor.betterElement("dog", "cat", (x, y) -> false));
 
     //5
     String[] stringArray4 = {"a", "dsad", "f", "wr3", "wabwdfafwf"};
@@ -48,6 +48,10 @@ public class Outline {
     System.out.println(wordsWithB);
     List<String> evenLengthWords = allMatches(Arrays.asList(stringArray4), s -> (s.length() % 2) == 0);
     System.out.println(evenLengthWords);
+
+    //6
+
+
 
     // Arrays.sort(intArray,.......)
   }
@@ -62,9 +66,18 @@ public class Outline {
     return 0;
   }
 
-  public static List<String> allMatches(List<String> list, Predicate<String> p) {
-    List<String> listTwo = new LinkedList<>();
-    for (String s : list) {
+//  public static List<String> allMatches(List<String> list, Predicate<String> p) {
+//    List<String> listTwo = new LinkedList<>();
+//    for (String s : list) {
+//      if (p.test(s))
+//        listTwo.add(s);
+//    }
+//    return listTwo;
+//  }
+
+  public static <T> List<T> allMatches(List<T> list, Predicate<T> p) {
+    List<T> listTwo = new LinkedList<T>();
+    for (T s : list) {
       if (p.test(s))
         listTwo.add(s);
     }
